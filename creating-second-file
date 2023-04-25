@@ -1,0 +1,43 @@
+a branch is a copy of my main(master) branch, where changes can be made, and afterr it can be merged back to main branch.
+$ git branch fixedtemp(a new branch with a name)
+
+User@Jay-pc MINGW64 /c/users/user/git (master)
+$ git branch(this cmd shows all branches made)
+  fixedtemp
+* master
+$ git switch fixedtemp(switch cmd allows us to switch from one branch to another)
+Switched to branch 'fixedtemp'
+User@Jay-pc MINGW64 /c/users/user/git (fixedtemp)
+**after making changes on the new branch, we check at the new status 
+$ git status
+On branch fixedtemp
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   secret recipe.htm
+**then we commit our changes so that pple know
+$ git commit -a -m "updated temp for baking"(we use -a -m to commit)
+[fixedtemp 074a26c] updated temp for baking
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+*** to merge back the new branch to main (master) branch
+git merge -m "Merge fixedtemp back to master" fixedtemp(we must specify the branch merged)
+
+Updating 48eb333..074a26c
+Fast-forward (no commit created; -m option ignored)
+ secret recipe.htm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+***to delete the branch we have just merged
+$ git branch -d fixedtemp
+Deleted branch fixedtemp (was 074a26c).
+***creating and switching to a new branch to avoid collision of data
+$ git switch -c updateT(-c is for create)
+Switched to a new branch 'updateT'
+
+****this occurs when we try merge 
+$ git merge updateT
+Auto-merging index.htm
+CONFLICT (content): Merge conflict in index.htm
+Automatic merge failed; fix conflicts and then commit the result.
+
+
